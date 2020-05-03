@@ -13,7 +13,6 @@ public class PlayerCollider : MonoBehaviour
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
         box = GetComponentInChildren<BoxCollider2D>();
-        Debug.Log(sprite.sprite.name);
     }
 
 
