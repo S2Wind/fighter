@@ -13,6 +13,8 @@ public class PlayerControl : MonoBehaviour
 
     Vector3 pos;
     float xVal;
+    float xDir;
+    float yVal;
     float timer;
 
     bool isJumping;
@@ -33,15 +35,14 @@ public class PlayerControl : MonoBehaviour
         Movement();
         //Test
         IsGround();
-        //isClimbing();
+        isClimbing();
     }
 
     private void Movement()
     {
-        xVal = Input.GetAxis("Horizontal");
-
-        pos = new Vector3(xVal, 0f);
-
+        xDir = Input.GetAxis("Horizontal");
+        //xTemp for dir 
+        //xVal for value
 
 
         //Jumping and Sliding
@@ -50,13 +51,28 @@ public class PlayerControl : MonoBehaviour
 
         //Climb
 
+        if(isClimbing())
+        {
+            xVal = 0;
+            //Climbing Ability here
+            rb.gravityScale = 0.2f;
+            //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
+        }
+        else
+        {
+            rb.gravityScale = 1f;
+            xVal = xDir;
+            yVal = 0f;
+        }
+
+        pos = new Vector3(transform.position.x + xVal * Time.deltaTime * speed, transform.position.y + yVal ,0f);
 
         anmt.SetFloat("x", xVal);
 
         //Flip Sprite
         FlipX();
 
-        transform.position += pos * Time.deltaTime * speed;
+        transform.position = pos ;
     }
 
     private void JumpAndSlide()
@@ -64,6 +80,8 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && IsGround())
         {
             isJumping = true;
+            // s = (v1^2) - 2*g
+            // 4 ô 
             rb.velocity = new Vector2(0, 9f);
             anmt.SetFloat("y", 10f);
             Debug.Log(1);
@@ -78,7 +96,7 @@ public class PlayerControl : MonoBehaviour
         {
             isSliding = true;
             anmt.SetFloat("y", -10f);
-            rb.velocity = new Vector2(3f * Mathf.Sign(xVal), -2f);
+            rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
             timer = 0;
             Debug.Log(3);
         }
@@ -91,17 +109,17 @@ public class PlayerControl : MonoBehaviour
         else if (Input.GetKey(KeyCode.S) && Mathf.Abs(rb.velocity.x) < 1f)
         {
             timer += Time.deltaTime;
-            pos.x = xVal - (0.6f * xVal) * Mathf.Clamp(timer, 0, 2f) / 2;
+            pos.x = xDir - (0.6f * xDir) * Mathf.Clamp(timer, 0, 2f) / 2;
         }
     }
 
     private void FlipX()
     {
-        if (xVal < 0)
+        if (xDir < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
-        else if (xVal > 0)
+        else if (xDir > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
@@ -112,7 +130,7 @@ public class PlayerControl : MonoBehaviour
     bool IsGround()
     {
         float height = 0.01f;
-        RaycastHit2D cast2d = Physics2D.BoxCast(box.bounds.center + Mathf.Sign(xVal)*new Vector3(-0.1f,0f,0f)
+        RaycastHit2D cast2d = Physics2D.BoxCast(box.bounds.center + Mathf.Sign(xDir)*new Vector3(-0.1f,0f,0f)
                             , box.bounds.size - new Vector3(0.2f,-height,0f), 0f, Vector2.down,height,layerMask);
         Color rayColor;
         if (cast2d.collider != null)
@@ -127,14 +145,14 @@ public class PlayerControl : MonoBehaviour
 
     bool isClimbing()
     {
-        float length = box.bounds.extents.x+0.1f;
-        RaycastHit2D cast2D = Physics2D.Raycast(box.bounds.center, Vector2.right * Mathf.Sign(xVal),length,layerMask);
+        float length = box.bounds.extents.x;
+        RaycastHit2D cast2D = Physics2D.Raycast(box.bounds.center, Vector2.right * Mathf.Sign(xDir),length,layerMask);
         Color rayColor;
         if (cast2D.collider != null)
             rayColor = Color.green;
         else
             rayColor = Color.red;
-        Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(xVal) * length, rayColor);
+        Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(xDir) * length, rayColor);
         return cast2D.collider != null;
     }
 
