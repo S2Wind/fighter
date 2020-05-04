@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Enermies
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Platform
   - Player
-  - 
+  - Enermies
   - 
   - 
   - 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] float speed;
+
     [SerializeField] LayerMask layerMask;
 
     Animator anmt;
@@ -65,24 +66,24 @@ public class PlayerControl : MonoBehaviour
         transform.position = pos;
     }
 
-    private void Climbing()
-    {
-        if (isClimbing())
-        {
-            xVal = 0;
-            anmt.SetTrigger("isClimb");
-            //Climbing Ability here
-            rb.gravityScale = 0.2f;
-            //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
-        }
-        else
-        {
+    //private void Climbing()
+    //{
+    //    if (isClimbing())
+    //    {
+    //        xVal = 0;
+    //        anmt.SetTrigger("isClimb");
+    //        //Climbing Ability here
+    //        rb.gravityScale = 0.2f;
+    //        //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
+    //    }
+    //    else
+    //    {
              
-            rb.gravityScale = 1f;
-            xVal = xDir;
-            yVal = 0f;
-        }
-    }
+    //        rb.gravityScale = 1f;
+    //        xVal = xDir;
+    //        yVal = 0f;
+    //    }
+    //}
 
     private void JumpAndSlide()
     {
@@ -169,8 +170,8 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Platform" && anmt.GetFloat("y") > 0)
-            anmt.SetFloat("y", 0f);
+        if ((collision.collider.tag == "Platform" || collision.collider.tag == "Enermies") && anmt.GetFloat("y") > 0)
+                anmt.SetFloat("y", 0f);
     }
 }
   

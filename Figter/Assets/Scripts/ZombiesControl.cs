@@ -81,12 +81,12 @@ public class ZombiesControl : MonoBehaviour
             {
                 if (vec.magnitude <= distanceForAttack)
                 {
-                    body.position += vec.normalized * speed * Time.deltaTime;
+                    body.position += vec.normalized * speed*attackAproachSpeed * Time.deltaTime;
                     anmt.SetTrigger("isAttack");
                 }
                 else
                 {
-                    body.position += vec.normalized * speed * attackAproachSpeed * Time.deltaTime;
+                    body.position += vec.normalized * speed * Time.deltaTime;
                     anmt.SetTrigger("isRun");
                 }
             }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5623290412945310390}
   - component: {fileID: 5623290412945310385}
   - component: {fileID: 994152741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FemaleZombie
-  m_TagString: Untagged
+  m_TagString: Enermies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   speed: 4
   distanceForChase: 4.5
   distanceForAttack: 1.5
-  attackAproachSpeed: 1.5
+  attackAproachSpeed: 1.2
   angle: 0
   distance: 1.5
   dir: {x: 1, y: 0}
@@ -90,9 +90,9 @@ GameObject:
   - component: {fileID: 5623290413277347694}
   - component: {fileID: 5623290413277347689}
   - component: {fileID: 5623290413277347688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FBody
-  m_TagString: Untagged
+  m_TagString: Enermies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5623290413277347690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.69, y: 5.77, z: 0}
+  m_LocalPosition: {x: -5.32, y: 5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5623290412945310390}
@@ -195,7 +195,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
