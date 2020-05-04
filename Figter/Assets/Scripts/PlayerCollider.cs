@@ -5,16 +5,10 @@ using UnityEngine;
 public class PlayerCollider : MonoBehaviour
 {
 
-    SpriteRenderer sprite;
-    BoxCollider2D box;
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] BoxCollider2D box;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        box = GetComponentInChildren<BoxCollider2D>();
-    }
-
 
     public void SetBoxCollider()
     {

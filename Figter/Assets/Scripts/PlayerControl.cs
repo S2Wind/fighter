@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D box;
 
+
     Vector3 pos;
     float xVal;
     float xDir;
@@ -45,41 +46,48 @@ public class PlayerControl : MonoBehaviour
         //xVal for value
 
 
+        xVal = xDir;
         //Jumping and Sliding
 
         JumpAndSlide();
 
         //Climb
 
-        if(isClimbing())
+        //Climbing();
+
+        pos = new Vector3(transform.position.x + xVal * Time.deltaTime * speed, transform.position.y + yVal, 0f);
+
+        anmt.SetFloat("x", xDir);
+
+        //Flip Sprite
+        FlipX();
+
+        transform.position = pos;
+    }
+
+    private void Climbing()
+    {
+        if (isClimbing())
         {
             xVal = 0;
+            anmt.SetTrigger("isClimb");
             //Climbing Ability here
             rb.gravityScale = 0.2f;
             //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
         }
         else
         {
+             
             rb.gravityScale = 1f;
             xVal = xDir;
             yVal = 0f;
         }
-
-        pos = new Vector3(transform.position.x + xVal * Time.deltaTime * speed, transform.position.y + yVal ,0f);
-
-        anmt.SetFloat("x", xVal);
-
-        //Flip Sprite
-        FlipX();
-
-        transform.position = pos ;
     }
 
     private void JumpAndSlide()
     {
-        if (Input.GetKeyDown(KeyCode.W) && IsGround())
+        if (Input.GetKeyDown(KeyCode.W) && IsGround() )
         {
-            isJumping = true;
             // s = (v1^2) - 2*g
             // 4 ô 
             rb.velocity = new Vector2(0, 9f);
@@ -96,7 +104,8 @@ public class PlayerControl : MonoBehaviour
         {
             isSliding = true;
             anmt.SetFloat("y", -10f);
-            rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
+            if(!Mathf.Approximately(xDir,0f))
+                rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
             timer = 0;
             Debug.Log(3);
         }
@@ -109,7 +118,7 @@ public class PlayerControl : MonoBehaviour
         else if (Input.GetKey(KeyCode.S) && Mathf.Abs(rb.velocity.x) < 1f)
         {
             timer += Time.deltaTime;
-            pos.x = xDir - (0.6f * xDir) * Mathf.Clamp(timer, 0, 2f) / 2;
+            xVal = xDir - (0.6f * xDir) * Mathf.Clamp(timer, 0, 2f) / 2;
         }
     }
 
@@ -160,7 +169,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Platform" && anmt.GetFloat("y") > 0 )
+        if (collision.collider.tag == "Platform" && anmt.GetFloat("y") > 0)
             anmt.SetFloat("y", 0f);
     }
 }
