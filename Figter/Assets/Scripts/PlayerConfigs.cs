@@ -10,6 +10,8 @@ public static class PlayerConfigs
 
     static bool doubleJump;
 
+    static bool gameStart = false;
+
     static Vector2 jumpVector = new Vector2(0f, 5f);
     static Vector2 jumpAfterJumpVector = new Vector2(0, 1f);
 
@@ -23,4 +25,5 @@ public static class PlayerConfigs
     public static Vector2 JumpAfterJumpVector { get => jumpAfterJumpVector; set => jumpAfterJumpVector = value; }
     public static Vector2 SlideAfterSlideVector1 { get => SlideAfterSlideVector; set => SlideAfterSlideVector = value; }
     public static bool DoubleJump { get => doubleJump; set => doubleJump = value; }
+    public static bool GameStart { get => gameStart; set => gameStart = value; }
 }

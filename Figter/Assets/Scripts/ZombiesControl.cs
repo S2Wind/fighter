@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ZombiesControl : MonoBehaviour
 {
+
+    [Header("Link")] 
+
     [SerializeField] BoxCollider2D box;
 
     [SerializeField] LayerMask layerMask;
@@ -11,6 +14,10 @@ public class ZombiesControl : MonoBehaviour
     [SerializeField] Transform player;
 
     [SerializeField] Transform body;
+
+    [SerializeField] UIManager uiManager;
+
+    [SerializeField] PlayerHealth playerHealth;
 
     [Header("Configs")]
 
@@ -22,6 +29,9 @@ public class ZombiesControl : MonoBehaviour
 
     [SerializeField] float attackAproachSpeed;
 
+    [SerializeField] float dameToPlayer;
+
+
     [Header("Aria")]
 
     [SerializeField] float angle;
@@ -32,11 +42,24 @@ public class ZombiesControl : MonoBehaviour
 
     [SerializeField] Vector2 size;
 
+    [Header("Attact Aria")]
+
+    [SerializeField] float attackAngle;
+
+    [SerializeField] Vector2 attackDir;
+
+    [SerializeField] Vector2 attackSize;
+
+    [SerializeField] float attackDis;
+
 
     Vector3 vec;
     RaycastHit2D aria;
     Animator anmt;
     float xDir;
+    SpriteRenderer zombies;
+    PlayerControl playerControl;
+    
     /* 1. Idle
      * 2. Chase
      * 3. Attack
@@ -50,7 +73,10 @@ public class ZombiesControl : MonoBehaviour
 
     private void Start()
     {
-        anmt = GetComponentInParent<Animator>();
+        anmt = GetComponent<Animator>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        playerControl = playerHealth.gameObject.GetComponent<PlayerControl>();
+        zombies = GetComponentInChildren<SpriteRenderer>();
     }
 
 
@@ -64,15 +90,15 @@ public class ZombiesControl : MonoBehaviour
         IfElseAI();
 
         if (xDir < 0f)
-            body.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            zombies.flipX = true;
         else
-            body.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            zombies.flipX = false;
 
     }
 
     private void IfElseAI()
     {
-        if ((attitude & chase) == chase)
+        if ((attitude & chase) == chase && playerControl.Attitudes !=32)
         {
             vec = (player.position - body.position);
             xDir = Mathf.Sign(vec.x);
@@ -117,11 +143,11 @@ public class ZombiesControl : MonoBehaviour
         return aria.collider != null;
     }
 
-    Vector2 RotateDir(Vector2 dir , float angle)
+    public void DetechPlayer()
     {
-        float xVal = dir.x * Mathf.Cos(angle) - dir.y * Mathf.Sin(angle);
-        float yVal = dir.x * Mathf.Sin(angle) + dir.y * Mathf.Cos(angle);
-        return new Vector2(xVal, yVal);
+        RaycastHit2D cast2D = Physics2D.BoxCast(box.bounds.center, attackSize, attackAngle, attackDir, attackDis, layerMask);
+        if (cast2D.collider != null)
+            playerHealth.DamagePlayer(dameToPlayer);
     }
 
 }

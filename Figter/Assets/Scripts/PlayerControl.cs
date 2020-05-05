@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     Animator anmt;
     Rigidbody2D rb;
     BoxCollider2D box;
+    SpriteRenderer sprite;
 
 
     Vector3 pos;
@@ -19,25 +20,38 @@ public class PlayerControl : MonoBehaviour
     float yVal;
     float timer;
 
-    bool isJumping;
-    bool isSliding;
+
+    int attitudes;
+
+    int idle = 1;
+    int run = 2;
+    int jump = 4;
+    int slide = 8;
+    int climb = 16;
+    int dead = 32;
+
+    public int Attitudes { get => attitudes; set => attitudes = value; }
 
     void Start()
     {
-        isJumping = false;
-        isSliding = false;
+        Attitudes = 1;
         anmt = GetComponentInParent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        //Test
-        IsGround();
-        isClimbing();
+        if (attitudes != dead)
+        {
+            Movement();
+            //Test
+            IsGround();
+            isClimbing();
+        }
+
     }
 
     private void Movement()
@@ -54,11 +68,11 @@ public class PlayerControl : MonoBehaviour
 
         //Climb
 
-        //Climbing();
+        Climbing();
 
         pos = new Vector3(transform.position.x + xVal * Time.deltaTime * speed, transform.position.y + yVal, 0f);
 
-        anmt.SetFloat("x", xDir);
+        anmt.SetFloat("x", xVal);
 
         //Flip Sprite
         FlipX();
@@ -66,24 +80,26 @@ public class PlayerControl : MonoBehaviour
         transform.position = pos;
     }
 
-    //private void Climbing()
-    //{
-    //    if (isClimbing())
-    //    {
-    //        xVal = 0;
-    //        anmt.SetTrigger("isClimb");
-    //        //Climbing Ability here
-    //        rb.gravityScale = 0.2f;
-    //        //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
-    //    }
-    //    else
-    //    {
-             
-    //        rb.gravityScale = 1f;
-    //        xVal = xDir;
-    //        yVal = 0f;
-    //    }
-    //}
+    private void Climbing()
+    {
+        if (isClimbing())
+        {
+            xVal = 0;
+            attitudes = climb;
+            anmt.SetTrigger("isClimb");
+            //Climbing Ability here
+            if(rb.velocity.y<0)
+                rb.gravityScale = 0.2f;
+            //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
+        }
+        else
+        {
+            attitudes = idle;
+            rb.gravityScale = 1f;
+            xVal = xDir;
+            yVal = 0f;
+        }
+    }
 
     private void JumpAndSlide()
     {
@@ -93,28 +109,26 @@ public class PlayerControl : MonoBehaviour
             // 4 ô 
             rb.velocity = new Vector2(0, 9f);
             anmt.SetFloat("y", 10f);
-            Debug.Log(1);
+            Attitudes = jump;
         }
         else if (Input.GetKeyUp(KeyCode.W) && !IsGround())
         {
             if (rb.velocity.y > 0)
                 rb.velocity = Vector2.zero;
-            Debug.Log(2);
+            attitudes = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.S) && !isSliding)
+        else if (Input.GetKeyDown(KeyCode.S) && (attitudes & slide) == 0)
         {
-            isSliding = true;
             anmt.SetFloat("y", -10f);
             if(!Mathf.Approximately(xDir,0f))
                 rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
             timer = 0;
-            Debug.Log(3);
+            Attitudes = slide;
         }
-        else if (Input.GetKeyUp(KeyCode.S) && isSliding)
+        else if (Input.GetKeyUp(KeyCode.S))
         {
             anmt.SetFloat("y", 0f);
-            isSliding = false;
-            Debug.Log(4);
+            attitudes = idle;
         }
         else if (Input.GetKey(KeyCode.S) && Mathf.Abs(rb.velocity.x) < 1f)
         {
@@ -127,11 +141,11 @@ public class PlayerControl : MonoBehaviour
     {
         if (xDir < 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            sprite.flipX = true;
         }
         else if (xDir > 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            sprite.flipX = false;
         }
     }
 
@@ -144,9 +158,18 @@ public class PlayerControl : MonoBehaviour
                             , box.bounds.size - new Vector3(0.2f,-height,0f), 0f, Vector2.down,height,layerMask);
         Color rayColor;
         if (cast2d.collider != null)
+        {
+            if (rb.velocity.y < 0 && anmt.GetFloat("y")>=0)
+            {
+                anmt.SetFloat("y", 0f);
+                anmt.SetTrigger("doneClimb");
+            }
             rayColor = Color.green;
+        }
         else
+        {
             rayColor = Color.red;
+        }
         Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x,0f,0f),Vector2.down * (box.bounds.extents.y + height),rayColor);
         Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0f, 0f), Vector2.down * (box.bounds.extents.y + height), rayColor);
         Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, box.bounds.extents.y+height, 0f), Vector2.right * (box.bounds.extents.x*2), rayColor);
@@ -155,23 +178,34 @@ public class PlayerControl : MonoBehaviour
 
     bool isClimbing()
     {
-        float length = box.bounds.extents.x;
-        RaycastHit2D cast2D = Physics2D.Raycast(box.bounds.center, Vector2.right * Mathf.Sign(xDir),length,layerMask);
+        float length = box.bounds.extents.x+0.1f;
+        int dir;
+        if (sprite.flipX == true)
+            dir = -1;
+        else
+            dir = 1;
+        RaycastHit2D cast2D = Physics2D.Raycast(box.bounds.center, Vector2.right * Mathf.Sign(dir),length,layerMask);
         Color rayColor;
         if (cast2D.collider != null)
+        {
             rayColor = Color.green;
+        }
         else
             rayColor = Color.red;
-        Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(xDir) * length, rayColor);
-        return cast2D.collider != null;
+        Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(dir) * length, rayColor);
+        if (!IsGround() && cast2D.collider != null)
+            return true;
+        else
+            return false;
+
     }
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if ((collision.collider.tag == "Platform" || collision.collider.tag == "Enermies") && anmt.GetFloat("y") > 0)
-                anmt.SetFloat("y", 0f);
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if ((collision.collider.tag == "Platform" || collision.collider.tag == "Enermies") && anmt.GetFloat("y") > 0)
+    //            anmt.SetFloat("y", 0f);
+    //}
 }
   

@@ -46,7 +46,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: bdf9dee7f6fec0644a7f4e167ea97f6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -70,14 +70,21 @@ MonoBehaviour:
     m_Bits: 512
   player: {fileID: 0}
   body: {fileID: 5623290413277347691}
-  speed: 4
+  uiManager: {fileID: 0}
+  playerHealth: {fileID: 0}
+  speed: 4.5
   distanceForChase: 4.5
   distanceForAttack: 1.5
-  attackAproachSpeed: 1.2
+  attackAproachSpeed: 1.1
+  dameToPlayer: 0.5
   angle: 0
   distance: 1.5
   dir: {x: 1, y: 0}
   size: {x: 3, y: 2}
+  attackAngle: 0
+  attackDir: {x: 1, y: 0}
+  attackSize: {x: 0.5, y: 1.1}
+  attackDis: 0.5
 --- !u!1 &5623290413277347690
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5623290413277347690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.32, y: 5.9, z: 0}
+  m_LocalPosition: {x: -6.89, y: 5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5623290412945310390}
