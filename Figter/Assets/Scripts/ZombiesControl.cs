@@ -128,7 +128,7 @@ public class ZombiesControl : MonoBehaviour
     private bool RayCastAria()
     {
         if (xDir == 0) xDir = 1;
-        aria = Physics2D.BoxCast(box.bounds.center, size, angle, dir*xDir,distance, layerMask);
+        aria = Physics2D.BoxCast(box.bounds.center, size, angle, dir * xDir, distance, layerMask);
         Color rayColor;
         if (aria.collider != null)
         {

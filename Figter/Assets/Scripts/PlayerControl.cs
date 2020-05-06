@@ -70,14 +70,14 @@ public class PlayerControl : MonoBehaviour
 
         Climbing();
 
-        pos = new Vector3(transform.position.x + xVal * Time.deltaTime * speed, transform.position.y + yVal, 0f);
+        pos = new Vector3(xVal * Time.deltaTime * speed,yVal, 0f);
 
         anmt.SetFloat("x", xVal);
 
         //Flip Sprite
         FlipX();
 
-        transform.position = pos;
+        transform.position += pos;
     }
 
     private void Climbing()
@@ -96,8 +96,8 @@ public class PlayerControl : MonoBehaviour
         {
             attitudes = idle;
             rb.gravityScale = 1f;
-            xVal = xDir;
-            yVal = 0f;
+            //xVal = xDir;
+            //yVal = 0f;
         }
     }
 

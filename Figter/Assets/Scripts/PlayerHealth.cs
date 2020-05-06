@@ -11,9 +11,15 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] float maxHealth;
 
+    [SerializeField] float timeToUntouchable;
+
     [Header("System")]
 
     [SerializeField] UIManager UIManager;
+
+    bool touchable;
+
+    public bool Touchable { get => touchable; set => touchable = value; }
 
     public float GetHealth() { return health; }
 
@@ -32,7 +38,8 @@ public class PlayerHealth : MonoBehaviour
             health = PlayerConfigs.Health;
             maxHealth = PlayerConfigs.MaxHealth;
         }
-
+        Touchable = true;
+        timeToUntouchable = 1f;
     }
 
     public void HealthRegain(float amount)
@@ -43,16 +50,27 @@ public class PlayerHealth : MonoBehaviour
 
     public void DamagePlayer(float amount)
     {
-        if( health > 0f)
+        if (Touchable)
         {
-            health -= amount;
-            UIManager.SetPlayerHealthAmountText(health);
-            if (health <= 0)
+            if (health > 0f)
             {
-                gameObject.GetComponentInParent<Animator>().SetTrigger("isDead");
-                gameObject.GetComponent<PlayerControl>().Attitudes = 32;
+                health -= amount;
+                UIManager.SetPlayerHealthAmountText(health);
+                if (health <= 0)
+                {
+                    gameObject.GetComponentInParent<Animator>().SetTrigger("isDead");
+                    gameObject.GetComponent<PlayerControl>().Attitudes = 32;
+                }
+                StartCoroutine(UntouchableTime());
             }
         }
+        
+    }
+
+    IEnumerator UntouchableTime()
+    {
+        yield return new WaitForSeconds(timeToUntouchable);
+        Touchable = true;
     }
 
 
