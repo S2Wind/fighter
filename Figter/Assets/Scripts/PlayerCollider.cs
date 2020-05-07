@@ -24,4 +24,5 @@ public class PlayerCollider : MonoBehaviour
             box.size = BoxCollider2DControl.playerBoxIdleSize;
         }
     }
+
 }

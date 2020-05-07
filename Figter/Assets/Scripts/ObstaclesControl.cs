@@ -25,10 +25,10 @@ public class ObstaclesControl : MonoBehaviour
                     Rigidbody2D rb = player.gameObject.GetComponent<Rigidbody2D>();
                     SpriteRenderer spr = player.gameObject.GetComponent<SpriteRenderer>();
                     playerhealth.Touchable = false;
-                    rb.velocity = new Vector2(-2f * ((spr.flipX == false) ? 1f : -1f), 4f * ((rb.velocity.y >= 0) ? 1 : -1));
+                    rb.velocity = new Vector2(-2f * ((spr.flipX == false) ? 1f : -1f), 5f * ((rb.velocity.y >= 0) ? 1 : -1));
 
                     //IEnumbertor // Thieu animtion
-                    StartCoroutine(PlayerEffects.StunPlayer(player, 1f));
+                    StartCoroutine(PlayerEffects.StunPlayer(player, 2f));
                 }
             }
 

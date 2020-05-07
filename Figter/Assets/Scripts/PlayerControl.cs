@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
 
 
     Vector3 pos;
+    Vector3 climbPos;
     float xVal;
     float xDir;
     float yVal;
@@ -27,8 +28,10 @@ public class PlayerControl : MonoBehaviour
     int run = 2;
     int jump = 4;
     int slide = 8;
-    int climb = 16;
+    int climbMode = 16;
     int dead = 32;
+
+    int climbType;
 
     public int Attitudes { get => attitudes; set => attitudes = value; }
 
@@ -46,10 +49,17 @@ public class PlayerControl : MonoBehaviour
     {
         if (attitudes != dead)
         {
-            Movement();
-            //Test
-            IsGround();
-            isClimbing();
+            //if (attitudes != climbMode)
+            //{
+                Movement();
+                //Test
+                IsGround();
+                isClimbing();
+            //}
+            //else
+            //{
+            //    Climbing();
+            //}
         }
 
     }
@@ -66,9 +76,6 @@ public class PlayerControl : MonoBehaviour
 
         JumpAndSlide();
 
-        //Climb
-
-        Climbing();
 
         pos = new Vector3(xVal * Time.deltaTime * speed,yVal, 0f);
 
@@ -80,25 +87,40 @@ public class PlayerControl : MonoBehaviour
         transform.position += pos;
     }
 
+    //2 type 
+    // climb Mode , can climb in actual mean
+    // climb by hold , just slow down the fall
     private void Climbing()
     {
-        if (isClimbing())
+        //xVal = Input.GetAxis("Horizontal");
+        //yVal = Input.GetAxis("Vertical");
+        //xDir = (sprite.flipX == false) ? 1 : -1 ;
+        //pos = new Vector3(xVal , yVal, 0f) * Time.deltaTime * speed;
+        //if (climbType == 1)
+        //{
+        //rb.gravityScale = 0;
+        //transform.position += pos;
+        //    attitudes = idle;
+        //}
+        //else
+        //{
+        anmt.SetFloat("x", 1f);
+        anmt.SetTrigger("isClimb");
+
+
+        //Climbing Ability here
+
+        if (rb.velocity.y < 0)
+            rb.gravityScale = 0.2f;
+        if (IsGround())
         {
-            xVal = 0;
-            attitudes = climb;
-            anmt.SetTrigger("isClimb");
-            //Climbing Ability here
-            if(rb.velocity.y<0)
-                rb.gravityScale = 0.2f;
-            //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .
-        }
-        else
-        {
-            attitudes = idle;
             rb.gravityScale = 1f;
-            //xVal = xDir;
-            //yVal = 0f;
+            anmt.SetFloat("x", 0f);
+            attitudes = idle;
         }
+        //}
+        //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .    
+        //    }
     }
 
     private void JumpAndSlide()
@@ -106,7 +128,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && IsGround() )
         {
             // s = (v1^2) - 2*g
-            // 4 ô 
+            // 4 ô   
             rb.velocity = new Vector2(0, 9f);
             anmt.SetFloat("y", 10f);
             Attitudes = jump;
@@ -178,7 +200,7 @@ public class PlayerControl : MonoBehaviour
 
     bool isClimbing()
     {
-        float length = box.bounds.extents.x+0.1f;
+        float length = box.bounds.extents.x+0.3f;
         int dir;
         if (sprite.flipX == true)
             dir = -1;
@@ -188,24 +210,22 @@ public class PlayerControl : MonoBehaviour
         Color rayColor;
         if (cast2D.collider != null)
         {
+            attitudes = climbMode;
+            if (cast2D.collider.tag == "Climbable")
+                climbType = 1;
+            else
+                climbType = 2;
             rayColor = Color.green;
         }
         else
+        {
             rayColor = Color.red;
+        }
         Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(dir) * length, rayColor);
         if (!IsGround() && cast2D.collider != null)
             return true;
         else
             return false;
-
     }
-
-
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if ((collision.collider.tag == "Platform" || collision.collider.tag == "Enermies") && anmt.GetFloat("y") > 0)
-    //            anmt.SetFloat("y", 0f);
-    //}
 }
   
