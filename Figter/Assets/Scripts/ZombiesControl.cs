@@ -103,7 +103,7 @@ public class ZombiesControl : MonoBehaviour
             vec = (player.position - body.position);
             xDir = Mathf.Sign(vec.x);
 
-            if (vec.magnitude <= distanceForChase)
+            if (vec.magnitude <= distanceForChase) 
             {
                 if (vec.magnitude <= distanceForAttack)
                 {

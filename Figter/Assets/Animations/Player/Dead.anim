@@ -19,28 +19,28 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 0
+    - time: 0.016666668
       value: {fileID: 21300000, guid: 0dbfebb87300e54409787162831657b4, type: 3}
-    - time: 0.1
+    - time: 0.15
       value: {fileID: 21300000, guid: 43f2fc551e1d2ef46a1b2275709dc4ca, type: 3}
-    - time: 0.21666667
+    - time: 0.23333333
       value: {fileID: 21300000, guid: e67a8fffea3e93a43a6dc4b4e959daf6, type: 3}
-    - time: 0.31666666
+    - time: 0.36666667
       value: {fileID: 21300000, guid: f3dd1f02faaa57c4fb13da6f2cdac84b, type: 3}
-    - time: 0.43333334
+    - time: 0.45
       value: {fileID: 21300000, guid: 1d327b3732e749f4b95788a42d10f48c, type: 3}
     - time: 0.56666666
       value: {fileID: 21300000, guid: e27d83e4bf09c3e418320e64e3d6ee51, type: 3}
-    - time: 0.68333334
+    - time: 0.65
       value: {fileID: 21300000, guid: 2cf3d86b7d983aa48a97d205cf29e879, type: 3}
     - time: 0.78333336
       value: {fileID: 21300000, guid: 58ccb28a88f97d84cbfbd16dd44ac67a, type: 3}
-    - time: 0.9
+    - time: 0.8666667
       value: {fileID: 21300000, guid: 99c3b1d1e6c45224782e6a263333ddf9, type: 3}
     - time: 1
       value: {fileID: 21300000, guid: 054706671a5e9684da97e457e3a3dd00, type: 3}
     attribute: m_Sprite
-    path: Body
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -51,7 +51,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2073732236
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -92,4 +92,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: SetBoxCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,12 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] LayerMask layerMask;
 
+    [SerializeField] Vector2 slideVecType1;
+
+    [SerializeField] Vector2 slideVecType2;
+
+    [SerializeField] Vector2 jumpVecType1;
+
     Animator anmt;
     Rigidbody2D rb;
     BoxCollider2D box;
@@ -16,6 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     Vector3 pos;
     Vector3 climbPos;
+    Vector3 tempPos;
     float xVal;
     float xDir;
     float yVal;
@@ -28,20 +36,40 @@ public class PlayerControl : MonoBehaviour
     int run = 2;
     int jump = 4;
     int slide = 8;
-    int climbMode = 16;
+    int climb = 16;
     int dead = 32;
 
+    /*Run type 1 : Walk
+     * Type 2 : Run 
+     */
+    int runType;
+
+    /*Slide Type 1 : Slide on Ground
+     * Type 2 : Slide down in the air
+     */
+    int slideType;
+    float slideXVal;
+
+    /*Climb type 1  : Climb for actual
+     * type 2 : just hold and slide down
+      */
     int climbType;
+
+    /* Jump type 1 : jump
+     * Type 2 : fall 
+     */
+    int jumpType;
 
     public int Attitudes { get => attitudes; set => attitudes = value; }
 
     void Start()
     {
         Attitudes = 1;
-        anmt = GetComponentInParent<Animator>();
+        anmt = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        if (sprite.flipX == false) xDir = 1;
     }
 
     // Update is called once per frame
@@ -49,49 +77,222 @@ public class PlayerControl : MonoBehaviour
     {
         if (attitudes != dead)
         {
-            //if (attitudes != climbMode)
-            //{
-                Movement();
-                //Test
-                IsGround();
-                isClimbing();
-            //}
-            //else
-            //{
-            //    Climbing();
-            //}
+            xVal = Input.GetAxis("Horizontal");
+            yVal = Input.GetAxis("Vertical");
+
+            if(xDir * xVal < 0)
+                FlipX();
+
+            anmt.SetFloat("x", xVal);
+           
+                
+
+
+            CheckAttitudes();
+
+            ActiveAttitudes();
+
+            Debug.Log(rb.velocity);
+
+
+            ////if (attitudes != climbMode)
+            ////{
+            //    Movement();
+            //    //Test
+            //    IsGround();
+            //    isClimbing();
+            ////}
+            ////else
+            ////{
+            ////    Climbing();
+            ////}
+        }
+    }
+
+    private void ActiveAttitudes()
+    {
+        if (attitudes == idle)
+        {
+            anmt.SetFloat("y", 0f);
+            anmt.SetTrigger("isIdle");
+        }
+        else if (attitudes == run)
+        {
+            anmt.SetFloat("y", 0f);
+            anmt.SetTrigger("isRun");
+            MoveFunction();
+        }
+        else if (attitudes == slide)
+        {
+            anmt.SetFloat("y", -10f);
+            SlideFunction();
+        }
+        else if (attitudes == climb)
+        {
+            anmt.SetTrigger("isClimb");
+            ClimbFunction();
+        }
+        else if (attitudes == jump)
+        {
+            anmt.SetFloat("y", 10f);
+            JumpFunction();
         }
 
+        if (attitudes != climb && rb.gravityScale !=1f)
+            rb.gravityScale = 1f;
     }
 
-    private void Movement()
+    private void CheckAttitudes()
     {
-        xDir = Input.GetAxis("Horizontal");
-        //xTemp for dir 
-        //xVal for value
-
-
-        xVal = xDir;
-        //Jumping and Sliding
-
-        JumpAndSlide();
-
-
-        pos = new Vector3(xVal * Time.deltaTime * speed,yVal, 0f);
-
-        anmt.SetFloat("x", xVal);
-
-        //Flip Sprite
-        FlipX();
-
-        transform.position += pos;
+        if (IsGround())
+        {
+            if (xVal != 0 && Mathf.Approximately(yVal, 0))
+            {
+                attitudes = run;
+            }
+            else if (yVal > 0.1f)
+            {
+                attitudes = jump;
+                jumpType = 1;
+            }
+            else if (yVal < -0.1f)
+            {
+                attitudes = slide;
+                slideType = 1;
+            }
+            else
+            {
+                attitudes = idle;
+            }
+        }
+        else
+        {
+            if (yVal < -0.1f)
+            {
+                attitudes = slide;
+                slideType = 2;
+            }
+            else if (isClimbing())
+            {
+                attitudes = climb;
+                //Type get in IsClimbing
+            }
+            else
+            {
+                attitudes = jump;
+                jumpType = 2;
+            }
+        }
+        //Debug.Log(rb.velocity);
     }
 
-    //2 type 
-    // climb Mode , can climb in actual mean
-    // climb by hold , just slow down the fall
-    private void Climbing()
+    //private void JumpAndSlide()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.W) && IsGround())
+    //    {
+    //        // s = (v1^2) - 2*g
+    //        // 4 ô   
+    //        rb.velocity = new Vector2(0, 9f);
+    //        anmt.SetFloat("y", 10f);
+    //        Attitudes = jump;
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.W) && !IsGround())
+    //    {
+    //        if (rb.velocity.y > 0)
+    //            rb.velocity = Vector2.zero;
+    //        attitudes = 1;
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.S) && (attitudes & slide) == 0)
+    //    {
+    //        anmt.SetFloat("y", -10f);
+    //        if (!Mathf.Approximately(xDir, 0f))
+    //            rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
+    //        timer = 0;
+    //        Attitudes = slide;
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.S))
+    //    {
+    //        anmt.SetFloat("y", 0f);
+    //        attitudes = idle;
+    //    }
+    //    else if (Input.GetKey(KeyCode.S) && Mathf.Abs(rb.velocity.x) < 1f)
+    //    {
+    //        timer += Time.deltaTime;
+    //        xVal = xDir - (0.6f * xDir) * Mathf.Clamp(timer, 0, 2f) / 2;
+    //    }
+    //}
+
+
+    void SlideFunction()
     {
+        //Debug.Log("slide");
+
+        if(Mathf.Approximately(rb.velocity.x,0f) && !IsGround())
+        {
+            timer = 0;
+            if (slideType == 1)
+            {
+                rb.velocity += new Vector2(slideVecType1.x*((xVal==0f)?0:xDir),slideVecType1.y);
+                //Add animation here
+            }
+            else
+            {
+                rb.velocity += new Vector2(slideVecType2.x * ((xVal == 0f) ? 0.01f : xDir), slideVecType2.y);
+            }
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            xVal = xVal * (1f - 0.8f * Mathf.Clamp(timer / 2, 0.01f, 1f));
+        }
+        MoveFunction();
+    }
+
+    void JumpFunction()
+    {
+        //Debug.Log("jump");
+        if (rb.velocity.y < 0.1f )
+        {
+           if(jumpType == 1)
+            {
+                rb.velocity = jumpVecType1;
+                jumpType = 2;
+            }
+           else
+            {
+                rb.velocity = new Vector2(0f,rb.velocity.y);
+            }
+        }
+        else
+        {
+            if(yVal <0.1f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y/2f);
+                anmt.SetFloat("y",10f);
+            }
+        }
+        
+
+        MoveFunction();
+    }
+
+    private void ClimbFunction()
+    {
+        //Debug.Log("Climb");
+
+        if(climbType == 1)
+        {
+
+        }
+        else
+        {
+            if (xDir * xVal >= 0)
+                xVal = 0f;
+            //if(!IsGround())
+            //    rb.gravityScale = 0.2f;
+            MoveFunction();
+        }
+
         //xVal = Input.GetAxis("Horizontal");
         //yVal = Input.GetAxis("Vertical");
         //xDir = (sprite.flipX == false) ? 1 : -1 ;
@@ -104,75 +305,56 @@ public class PlayerControl : MonoBehaviour
         //}
         //else
         //{
-        anmt.SetFloat("x", 1f);
-        anmt.SetTrigger("isClimb");
+        //anmt.SetFloat("x", 1f);
+        //anmt.SetTrigger("isClimb");
 
 
-        //Climbing Ability here
+        ////Climbing Ability here
 
-        if (rb.velocity.y < 0)
-            rb.gravityScale = 0.2f;
-        if (IsGround())
-        {
-            rb.gravityScale = 1f;
-            anmt.SetFloat("x", 0f);
-            attitudes = idle;
-        }
+        //if (rb.velocity.y < 0)
+        //    rb.gravityScale = 0.2f;
+        //if (IsGround())
+        //{
+        //    rb.gravityScale = 1f;
+        //    anmt.SetFloat("x", 0f);
+        //    attitudes = idle;
+        //}
         //}
         //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .    
         //    }
     }
 
-    private void JumpAndSlide()
+    private void MoveFunction()
     {
-        if (Input.GetKeyDown(KeyCode.W) && IsGround() )
-        {
-            // s = (v1^2) - 2*g
-            // 4 ô   
-            rb.velocity = new Vector2(0, 9f);
-            anmt.SetFloat("y", 10f);
-            Attitudes = jump;
-        }
-        else if (Input.GetKeyUp(KeyCode.W) && !IsGround())
-        {
-            if (rb.velocity.y > 0)
-                rb.velocity = Vector2.zero;
-            attitudes = 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && (attitudes & slide) == 0)
-        {
-            anmt.SetFloat("y", -10f);
-            if(!Mathf.Approximately(xDir,0f))
-                rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
-            timer = 0;
-            Attitudes = slide;
-        }
-        else if (Input.GetKeyUp(KeyCode.S))
-        {
-            anmt.SetFloat("y", 0f);
-            attitudes = idle;
-        }
-        else if (Input.GetKey(KeyCode.S) && Mathf.Abs(rb.velocity.x) < 1f)
-        {
-            timer += Time.deltaTime;
-            xVal = xDir - (0.6f * xDir) * Mathf.Clamp(timer, 0, 2f) / 2;
-        }
+        Debug.Log("Move");
+
+        //More State : 3 State 
+           //Walk : 0.3 speed
+           //Slightly Run : 0.7Speed 
+           //Max Run : max speed 
+
+        pos = new Vector3(xVal, 0f);
+
+        transform.position += pos*Time.deltaTime*speed;
+
+        //xDir = Input.GetAxis("Horizontal");
+        ////xTemp for dir 
+        ////xVal for value
+        ////Jumping and Sliding
+        //JumpAndSlide();
+        //pos = new Vector3(xVal * Time.deltaTime * speed,yVal, 0f);
+        //anmt.SetFloat("x", xVal);
+        ////Flip Sprite
+        //FlipX();
+        //transform.position += pos;
     }
+
 
     private void FlipX()
     {
-        if (xDir < 0)
-        {
-            sprite.flipX = true;
-        }
-        else if (xDir > 0)
-        {
-            sprite.flipX = false;
-        }
+        sprite.flipX = !sprite.flipX;
+        xDir = -xDir;
     }
-
-
-
     bool IsGround()
     {
         float height = 0.01f;
@@ -200,7 +382,7 @@ public class PlayerControl : MonoBehaviour
 
     bool isClimbing()
     {
-        float length = box.bounds.extents.x+0.3f;
+        float length = box.bounds.extents.x+0.1f;
         int dir;
         if (sprite.flipX == true)
             dir = -1;
@@ -210,7 +392,7 @@ public class PlayerControl : MonoBehaviour
         Color rayColor;
         if (cast2D.collider != null)
         {
-            attitudes = climbMode;
+            attitudes = climb;
             if (cast2D.collider.tag == "Climbable")
                 climbType = 1;
             else
