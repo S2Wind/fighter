@@ -86,7 +86,7 @@ public class ZombiesControl : MonoBehaviour
         RayCastAria();
 
         //Run
-        //Van co Direction tron day
+        //Van co Direction tron day   
         IfElseAI();
 
         if (xDir < 0f)

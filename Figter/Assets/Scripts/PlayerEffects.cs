@@ -12,7 +12,6 @@ public static class PlayerEffects
     static int  slide = 8;
     static int  climb = 16;
     static int  dead = 32;
-    static int controlable = 64;
 
     public static IEnumerator StunPlayer(PlayerControl player,float time)
     {

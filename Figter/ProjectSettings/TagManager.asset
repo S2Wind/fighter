@@ -22,7 +22,7 @@ TagManager:
   - Enermies
   - Obstacles
   - 
-  - 
+  - Background
   - 
   - 
   - 
@@ -42,9 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: BG
+    uniqueID: 248891363
     locked: 0
   - name: Platform
     uniqueID: 1027901641
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
