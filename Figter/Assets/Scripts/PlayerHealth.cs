@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
                 if (health <= 0)
                 {
                     gameObject.GetComponentInParent<Animator>().SetTrigger("isDead");
-                    gameObject.GetComponent<PlayerControl>().Attitudes = 32;
+                    PlayerControl.Attitudes = 32;
                 }
                 StartCoroutine(UntouchableTime());
             }

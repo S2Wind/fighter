@@ -38,21 +38,22 @@ public class PlayerControl : MonoBehaviour
     Vector3 climbPos;
     Vector3 tempPos;
     float xVal;
-    float xDir;
+    static float xDir;
     float yVal;
     float timer;
     float extentHeight =0.1f;
+    //lenghtOf
 
+    static bool isGround;
 
+    static int attitudes;
 
-    int attitudes;
-
-    int idle = 1;
-    int run = 2;
-    int jump = 4;
-    int slide = 8;
-    int climb = 16;
-    int dead = 32;
+    static int idle = 1;
+    static int run = 2;
+    static int jump = 4;
+    static int slide = 8;
+    static int climb = 16;
+    static int dead = 32;
 
     /*Run type 1 : Walk
      * Type 2 : Run 
@@ -75,7 +76,15 @@ public class PlayerControl : MonoBehaviour
      */
     int jumpType;
 
-    public int Attitudes { get => attitudes; set => attitudes = value; }
+    public static int Attitudes { get => attitudes; set => attitudes = value; }
+    public static int Idle { get => idle; set => idle = value; }
+    public static int Run { get => run; set => run = value; }
+    public static int Jump { get => jump; set => jump = value; }
+    public static int Slide { get => slide; set => slide = value; }
+    public static int Climb { get => climb; set => climb = value; }
+    public static int Dead { get => dead; set => dead = value; }
+    public static float XDir { get => xDir; set => xDir = value; }
+    public static bool IsGround1 { get => isGround; set => isGround = value; }
 
     void Start()
     {
@@ -84,18 +93,18 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
-        if (sprite.flipX == false) xDir = 1;
+        if (sprite.flipX == false) XDir = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attitudes != dead)
+        if (attitudes != Dead)
         {
             xVal = Input.GetAxis("Horizontal");
             yVal = Input.GetAxis("Vertical");
 
-            if(xDir * xVal < 0)
+            if(XDir * xVal < 0)
                 FlipX();
 
             anmt.SetFloat("x", xVal);
@@ -107,56 +116,44 @@ public class PlayerControl : MonoBehaviour
 
             ActiveAttitudes();
 
-
-
-            ////if (attitudes != climbMode)
-            ////{
-            //    Movement();
-            //    //Test
-            //    IsGround();
-            //    isClimbing();
-            ////}
-            ////else
-            ////{
-            ////    Climbing();
-            ////}
         }
     }
 
     private void ActiveAttitudes()
     {
-        if (attitudes == idle)
+        if (attitudes == Idle)
         {
             anmt.SetFloat("y", 0f);
             //anmt.SetTrigger("isIdle");
         }
-        else if (attitudes == run)
+        else if (attitudes == Run)
         {
             //anmt.SetFloat("y", 0f);
             //anmt.SetTrigger("isRun");
             anmt.SetFloat("y", 0f);
             MoveFunction();
         }
-        else if (attitudes == slide)
+        else if (attitudes == Slide)
         {
+            //Debug.Log("Slide");
             anmt.SetFloat("y", yVal);
             //anmt.SetFloat("y", -10f);
             SlideFunction();
         }
-        else if (attitudes == climb)
+        else if (attitudes == Climb)
         {
 
             //anmt.SetTrigger("isClimb");
             ClimbFunction();
         }
-        else if (attitudes == jump)
+        else if (attitudes == Jump)
         {
             anmt.SetFloat("y", rb.velocity.y);
             //anmt.SetFloat("y", 10f);
             JumpFunction();
         }
 
-        if (attitudes != climb && rb.gravityScale !=1f)
+        if (attitudes != Climb && rb.gravityScale !=1f)
             rb.gravityScale = 1f;
     }
 
@@ -166,80 +163,43 @@ public class PlayerControl : MonoBehaviour
         {
             if (xVal != 0 && Mathf.Approximately(yVal, 0))
             {
-                attitudes = run;
+                attitudes = Run;
             }
             else if (yVal > 0.1f)
             {
-                attitudes = jump;
+                attitudes = Jump;
                 jumpType = 1;
             }
             else if (yVal < -0.1f)
             {
-                attitudes = slide;
+                attitudes = Slide;
                 slideType = 1;
             }
             else
             {
-                attitudes = idle;
+                attitudes = Idle;
             }
         }
         else
         {
             if (yVal < -0.1f)
             {
-                attitudes = slide;
+                attitudes = Slide;
                 slideType = 2;
             }
             else if (isClimbing())
             {
-                attitudes = climb;
+                attitudes = Climb;
                 //Type get in IsClimbing
             }
             else
             {
-                attitudes = jump;
+                attitudes = Jump;
                 jumpType = 2;
             }
         }
         //Debug.Log(rb.velocity);
     }
-
-    //private void JumpAndSlide()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.W) && IsGround())
-    //    {
-    //        // s = (v1^2) - 2*g
-    //        // 4 ô   
-    //        rb.velocity = new Vector2(0, 9f);
-    //        anmt.SetFloat("y", 10f);
-    //        Attitudes = jump;
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.W) && !IsGround())
-    //    {
-    //        if (rb.velocity.y > 0)
-    //            rb.velocity = Vector2.zero;
-    //        attitudes = 1;
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.S) && (attitudes & slide) == 0)
-    //    {
-    //        anmt.SetFloat("y", -10f);
-    //        if (!Mathf.Approximately(xDir, 0f))
-    //            rb.velocity = new Vector2(3f * Mathf.Sign(xDir), -2f);
-    //        timer = 0;
-    //        Attitudes = slide;
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.S))
-    //    {
-    //        anmt.SetFloat("y", 0f);
-    //        attitudes = idle;
-    //    }
-    //    else if (Input.GetKey(KeyCode.S) && Mathf.Abs(rb.velocity.x) < 1f)
-    //    {
-    //        timer += Time.deltaTime;
-    //        xVal = xDir - (0.6f * xDir) * Mathf.Clamp(timer, 0, 2f) / 2;
-    //    }
-    //}
-
 
     void SlideFunction()
     {
@@ -250,17 +210,16 @@ public class PlayerControl : MonoBehaviour
             timer = 0;
             if (slideType == 1)
             {
-                rb.velocity += new Vector2(slideVecType1.x*((xVal==0f)?0.01f:xDir),slideVecType1.y);
+                rb.velocity += new Vector2(slideVecType1.x*((xVal==0f)?0.01f:XDir),slideVecType1.y);
                 //Add animation here
             }
             else
             {
-                rb.velocity += new Vector2(slideVecType2.x * ((xVal == 0f) ? 0.01f : xDir), slideVecType2.y);
+                rb.velocity += new Vector2(slideVecType2.x * ((xVal == 0f) ? 0.01f : XDir), slideVecType2.y);
             }
         }
         else
         {
-            Debug.Log(timer);
             timer += Time.deltaTime;
             xVal = xVal * (1f - 0.8f * Mathf.Clamp(timer / 2, 0.01f, 1f));
         }
@@ -301,56 +260,27 @@ public class PlayerControl : MonoBehaviour
 
         if(climbType == 1)
         {
+            if (rb.gravityScale == 1)
+            {
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 0f;
+            }
             if (yVal > 0 && xVal == 0)
                 rb.velocity = climbVecUp;
             else if (yVal < 0 && xVal == 0)
                 rb.velocity = climbVecDown;
-            else if (xVal > 0)
-                rb.velocity = climbVecForward;
-            else if (xVal < 0)
+            else if (xVal * XDir < 0)
                 rb.velocity = climbVecBack;
 
         }
         else
         {
-            if (xDir * xVal >= 0)
+            if (XDir * xVal >= 0)
             {
                 rb.velocity = climbVecDown;
             }
-            //if(!IsGround())
-            //    rb.gravityScale = 0.2f;
-            //MoveFunction();
         }
 
-        //xVal = Input.GetAxis("Horizontal");
-        //yVal = Input.GetAxis("Vertical");
-        //xDir = (sprite.flipX == false) ? 1 : -1 ;
-        //pos = new Vector3(xVal , yVal, 0f) * Time.deltaTime * speed;
-        //if (climbType == 1)
-        //{
-        //rb.gravityScale = 0;
-        //transform.position += pos;
-        //    attitudes = idle;
-        //}
-        //else
-        //{
-        //anmt.SetFloat("x", 1f);
-        //anmt.SetTrigger("isClimb");
-
-
-        ////Climbing Ability here
-
-        //if (rb.velocity.y < 0)
-        //    rb.gravityScale = 0.2f;
-        //if (IsGround())
-        //{
-        //    rb.gravityScale = 1f;
-        //    anmt.SetFloat("x", 0f);
-        //    attitudes = idle;
-        //}
-        //}
-        //suy xet lại thì thay đổi graviti của player là mượt nhất .chưa tính toán được .    
-        //    }
     }
 
     private void MoveFunction()
@@ -366,31 +296,23 @@ public class PlayerControl : MonoBehaviour
 
         transform.position += pos*Time.deltaTime*speed;
 
-        //xDir = Input.GetAxis("Horizontal");
-        ////xTemp for dir 
-        ////xVal for value
-        ////Jumping and Sliding
-        //JumpAndSlide();
-        //pos = new Vector3(xVal * Time.deltaTime * speed,yVal, 0f);
-        //anmt.SetFloat("x", xVal);
-        ////Flip Sprite
-        //FlipX();
-        //transform.position += pos;
     }
 
 
     private void FlipX()
     {
         sprite.flipX = !sprite.flipX;
-        xDir = -xDir;
+        XDir = -XDir;
     }
-    bool IsGround()
+    public bool IsGround()
     {
-        float height = 0.01f;
-        RaycastHit2D cast2d = Physics2D.BoxCast(box.bounds.center + Mathf.Sign(xDir)*new Vector3(-0.1f,0f,0f)
-                            , box.bounds.size - new Vector3(0.2f,-height,0f), 0f, Vector2.down,height,groundMask);
+        float lenghtOfGroundRay = 0.05f;
+        RaycastHit2D cast2d = Physics2D.BoxCast(box.bounds.center + Mathf.Sign(XDir)*new Vector3(-0.1f,0f,0f)
+                            , box.bounds.size - new Vector3(0.2f,-lenghtOfGroundRay,0f), 0f, Vector2.down,lenghtOfGroundRay,groundMask);
+        RaycastHit2D rayCast2D = Physics2D.Raycast(box.bounds.center, Vector2.down, box.bounds.extents.y + box.bounds.extents.x + lenghtOfGroundRay,groundMask);
+
         Color rayColor;
-        if (cast2d.collider != null)
+        if (cast2d.collider != null || rayCast2D.collider != null )
         {
             if (rb.velocity.y < 0 && anmt.GetFloat("y")>=0)
             {
@@ -399,20 +321,23 @@ public class PlayerControl : MonoBehaviour
             rayColor = Color.green;
             if (!anmt.GetBool("Grounded"))
                 anmt.SetBool("Grounded", true);
+            IsGround1 = true;
         }
         else
         {
             if (anmt.GetBool("Grounded"))
                 anmt.SetBool("Grounded", false);
             rayColor = Color.red;
+            IsGround1 = false;
         }
-        Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x,0f,0f),Vector2.down * (box.bounds.extents.y + height),rayColor);
-        Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0f, 0f), Vector2.down * (box.bounds.extents.y + height), rayColor);
-        Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, box.bounds.extents.y+height, 0f), Vector2.right * (box.bounds.extents.x*2), rayColor);
+        Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x,0f,0f),Vector2.down * (box.bounds.extents.y + lenghtOfGroundRay),rayColor);
+        Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0f, 0f), Vector2.down * (box.bounds.extents.y + lenghtOfGroundRay), rayColor);
+        Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, box.bounds.extents.y+lenghtOfGroundRay, 0f), Vector2.right * (box.bounds.extents.x*2), rayColor);
+        Debug.DrawRay(box.bounds.center, Vector2.down * (box.bounds.extents.y + box.bounds.extents.x + lenghtOfGroundRay), rayColor);
         return cast2d.collider != null;
     }
 
-    bool isClimbing()
+    public bool isClimbing()
     {
         float length = box.bounds.extents.x +extentHeight ;
         int dir;
@@ -424,10 +349,10 @@ public class PlayerControl : MonoBehaviour
         Color rayColor;
         if (cast2D.collider != null)
         {
-            attitudes = climb;
+            attitudes = Climb;
             if (cast2D.collider.tag == "Climbable")
             {
-                extentHeight = 0.3f;
+                extentHeight = 1f;
                 climbType = 1;
             }
             else
@@ -438,15 +363,18 @@ public class PlayerControl : MonoBehaviour
             if (!anmt.GetBool("Climbed"))
                 anmt.SetBool("Climbed", true);
 
-            transform.SetParent(cast2D.collider.transform);
+            //transform.SetParent(cast2D.collider.transform);
             rayColor = Color.green;
         }
         else
         {
+            extentHeight = 0.1f;
             if (anmt.GetBool("Climbed"))
                 anmt.SetBool("Climbed", false);
-            transform.SetParent(null);
+            //transform.SetParent(null);
             rayColor = Color.red;
+            if (rb.gravityScale == 0)
+                rb.gravityScale = 1;
         }
         Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(dir) * length, rayColor);
         if (!IsGround() && cast2D.collider != null)

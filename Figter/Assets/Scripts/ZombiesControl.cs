@@ -71,6 +71,12 @@ public class ZombiesControl : MonoBehaviour
     int attack = 4;
     int dead = 8;
 
+    public int Attitude { get => attitude; set => attitude = value; }
+    public int Idle { get => idle; set => idle = value; }
+    public int Chase { get => chase; set => chase = value; }
+    public int Attack { get => attack; set => attack = value; }
+    public int Dead { get => dead; set => dead = value; }
+
     private void Start()
     {
         anmt = GetComponent<Animator>();
@@ -98,7 +104,7 @@ public class ZombiesControl : MonoBehaviour
 
     private void IfElseAI()
     {
-        if ((attitude & chase) == chase && playerControl.Attitudes !=32)
+        if ((Attitude & Chase) == Chase && PlayerControl.Attitudes !=32)
         {
             vec = (player.position - body.position);
             xDir = Mathf.Sign(vec.x);
@@ -118,7 +124,7 @@ public class ZombiesControl : MonoBehaviour
             }
             else
             {
-                attitude = (attitude ^ chase);
+                Attitude = (Attitude ^ Chase);
             }
         }
         else
@@ -133,7 +139,7 @@ public class ZombiesControl : MonoBehaviour
         if (aria.collider != null)
         {
             rayColor = Color.green;
-            attitude = attitude | chase;
+            Attitude = Attitude | Chase;
         }
         else
             rayColor = Color.red;

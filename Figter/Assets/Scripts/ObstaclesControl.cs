@@ -17,7 +17,7 @@ public class ObstaclesControl : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            if (player.Attitudes != 32)
+            if (PlayerControl.Attitudes != 32)
             {
                 if (playerhealth.Touchable)
                 {
@@ -28,7 +28,7 @@ public class ObstaclesControl : MonoBehaviour
                     rb.velocity = new Vector2(-2f * ((spr.flipX == false) ? 1f : -1f), 5f * ((rb.velocity.y >= 0) ? 1 : -1));
 
                     //IEnumbertor // Thieu animtion
-                    StartCoroutine(PlayerEffects.StunPlayer(player, 2f));
+                    StartCoroutine(PlayerEffects.StunPlayer(player,2f));
                 }
             }
 

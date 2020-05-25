@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553327019400601844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.16, y: 0.93, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.02
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -134,15 +134,15 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.25}
-  m_ConnectedAnchor: {x: 4.16, y: 1.1800001}
+  m_ConnectedAnchor: {x: -2.742, y: 3.038}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 79.13764
-    m_UpperAngle: 291.1866
+    m_LowerAngle: -120
+    m_UpperAngle: 120
 --- !u!114 &553327019400601845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391b84f77213ee64494b48d5fd53173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberofChain: 10
+  numberofChain: 5
   curNumber: 1
+  nextTrans: {x: 0, y: -0.35, z: 0}
+  anchor: {x: 0, y: 0.15}
 --- !u!60 &553327019400601847
 PolygonCollider2D:
   m_ObjectHideFlags: 0

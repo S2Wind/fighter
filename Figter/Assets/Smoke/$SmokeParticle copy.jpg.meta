@@ -1,0 +1,1424 @@
+fileFormatVersion: 2
+guid: f7c288bb42dd36440a3bd5c6dc3c9c6e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6318465545320073693
+    second: $SmokeParticle copy_0
+  - first:
+      213: 8891789671362103144
+    second: $SmokeParticle copy_1
+  - first:
+      213: 747350684542187315
+    second: $SmokeParticle copy_2
+  - first:
+      213: 3627487366871845174
+    second: $SmokeParticle copy_3
+  - first:
+      213: 9119649209807021740
+    second: $SmokeParticle copy_4
+  - first:
+      213: 840780255179035344
+    second: $SmokeParticle copy_5
+  - first:
+      213: -8307388222104884362
+    second: $SmokeParticle copy_6
+  - first:
+      213: -5796509847303720039
+    second: $SmokeParticle copy_7
+  - first:
+      213: 4582281275338289291
+    second: $SmokeParticle copy_8
+  - first:
+      213: 9164522748033339966
+    second: $SmokeParticle copy_9
+  - first:
+      213: 7598392533032986659
+    second: $SmokeParticle copy_10
+  - first:
+      213: 1061191372625339794
+    second: $SmokeParticle copy_11
+  - first:
+      213: 434249565424068698
+    second: $SmokeParticle copy_12
+  - first:
+      213: -2697169709532756966
+    second: $SmokeParticle copy_13
+  - first:
+      213: 6685763281775673366
+    second: $SmokeParticle copy_14
+  - first:
+      213: 6359184080959600273
+    second: $SmokeParticle copy_15
+  - first:
+      213: 2226213779571669609
+    second: $SmokeParticle copy_16
+  - first:
+      213: -8118176850972198106
+    second: $SmokeParticle copy_17
+  - first:
+      213: -8070094973316896713
+    second: $SmokeParticle copy_18
+  - first:
+      213: -6034019209902131929
+    second: $SmokeParticle copy_19
+  - first:
+      213: 880551973406833188
+    second: $SmokeParticle copy_20
+  - first:
+      213: 4779668149536572762
+    second: $SmokeParticle copy_21
+  - first:
+      213: 3988093297412163917
+    second: $SmokeParticle copy_22
+  - first:
+      213: 7620818357907533464
+    second: $SmokeParticle copy_23
+  - first:
+      213: 936093388229042783
+    second: $SmokeParticle copy_24
+  - first:
+      213: -6556464271288668181
+    second: $SmokeParticle copy_25
+  - first:
+      213: -3210284917394545767
+    second: $SmokeParticle copy_26
+  - first:
+      213: 3901538323598786019
+    second: $SmokeParticle copy_27
+  - first:
+      213: -3571060660442519201
+    second: $SmokeParticle copy_28
+  - first:
+      213: -5798124065877093672
+    second: $SmokeParticle copy_29
+  - first:
+      213: -8454811306499171357
+    second: $SmokeParticle copy_30
+  - first:
+      213: -6518847121618396481
+    second: $SmokeParticle copy_31
+  - first:
+      213: -6149033352424142308
+    second: $SmokeParticle copy_32
+  - first:
+      213: -5943937536082992643
+    second: $SmokeParticle copy_33
+  - first:
+      213: 3889633135842935220
+    second: $SmokeParticle copy_34
+  - first:
+      213: -908193620547885667
+    second: $SmokeParticle copy_35
+  - first:
+      213: -4379465654948800624
+    second: $SmokeParticle copy_36
+  - first:
+      213: 1516951047807359473
+    second: $SmokeParticle copy_37
+  - first:
+      213: -681117337012658163
+    second: $SmokeParticle copy_38
+  - first:
+      213: -3533768296803212546
+    second: $SmokeParticle copy_39
+  - first:
+      213: 9070899110917322606
+    second: $SmokeParticle copy_40
+  - first:
+      213: -8157856556636712284
+    second: $SmokeParticle copy_41
+  - first:
+      213: 3116645855137578697
+    second: $SmokeParticle copy_42
+  - first:
+      213: -8738493091239669328
+    second: $SmokeParticle copy_43
+  - first:
+      213: -2640019117809691618
+    second: $SmokeParticle copy_44
+  - first:
+      213: -8173201380560756362
+    second: $SmokeParticle copy_45
+  - first:
+      213: -6871487856463839784
+    second: $SmokeParticle copy_46
+  - first:
+      213: 8173259630053273326
+    second: $SmokeParticle copy_47
+  - first:
+      213: 6532183476126653950
+    second: $SmokeParticle copy_48
+  - first:
+      213: 8995346062600086387
+    second: $SmokeParticle copy_49
+  - first:
+      213: -4295632765629655580
+    second: $SmokeParticle copy_50
+  - first:
+      213: 7018295274778355569
+    second: $SmokeParticle copy_51
+  - first:
+      213: 5725758776406063246
+    second: $SmokeParticle copy_52
+  - first:
+      213: -8430598134023384895
+    second: $SmokeParticle copy_53
+  - first:
+      213: -1724971077346064008
+    second: $SmokeParticle copy_54
+  - first:
+      213: 8728375304600521752
+    second: $SmokeParticle copy_55
+  - first:
+      213: 7922767237801717916
+    second: $SmokeParticle copy_56
+  - first:
+      213: -4550898818811798378
+    second: $SmokeParticle copy_57
+  - first:
+      213: -4460002217638301591
+    second: $SmokeParticle copy_58
+  - first:
+      213: -2762787679364186272
+    second: $SmokeParticle copy_59
+  - first:
+      213: 7704387876134933435
+    second: $SmokeParticle copy_60
+  - first:
+      213: -8877962978843431113
+    second: $SmokeParticle copy_61
+  - first:
+      213: 7092361466080605802
+    second: $SmokeParticle copy_62
+  - first:
+      213: -1152224622481699354
+    second: $SmokeParticle copy_63
+  - first:
+      213: -3437483592425423999
+    second: $SmokeParticle copy_64
+  - first:
+      213: -5215725151689200403
+    second: $SmokeParticle copy_65
+  - first:
+      213: 8857901178968842415
+    second: $SmokeParticle copy_66
+  - first:
+      213: 5203293337185498471
+    second: $SmokeParticle copy_67
+  - first:
+      213: 8348199001411309834
+    second: $SmokeParticle copy_68
+  - first:
+      213: 1921266237561585959
+    second: $SmokeParticle copy_69
+  - first:
+      213: 6241969567237528877
+    second: $SmokeParticle copy_70
+  - first:
+      213: -1337417286903300056
+    second: $SmokeParticle copy_71
+  - first:
+      213: 837358209104364799
+    second: $SmokeParticle copy_72
+  - first:
+      213: -312956117700776052
+    second: $SmokeParticle copy_73
+  - first:
+      213: -1485592334850873581
+    second: $SmokeParticle copy_74
+  - first:
+      213: 521996163394660518
+    second: $SmokeParticle copy_75
+  - first:
+      213: -6986296488665274579
+    second: $SmokeParticle copy_76
+  - first:
+      213: 7111545699250889921
+    second: $SmokeParticle copy_77
+  - first:
+      213: 2057318487044679643
+    second: $SmokeParticle copy_78
+  - first:
+      213: -5001958348866457048
+    second: $SmokeParticle copy_79
+  - first:
+      213: -1223661268157932516
+    second: $SmokeParticle copy_80
+  - first:
+      213: -2087248466543458576
+    second: $SmokeParticle copy_81
+  - first:
+      213: -3325388583853649260
+    second: $SmokeParticle copy_82
+  - first:
+      213: -7255157022628969136
+    second: $SmokeParticle copy_83
+  - first:
+      213: -4824635040421324093
+    second: $SmokeParticle copy_84
+  - first:
+      213: -4027486110272657905
+    second: $SmokeParticle copy_85
+  - first:
+      213: 4803405580443462766
+    second: $SmokeParticle copy_86
+  - first:
+      213: 3707704539364516343
+    second: $SmokeParticle copy_87
+  - first:
+      213: 4966299847497637309
+    second: $SmokeParticle copy_88
+  - first:
+      213: 2187775147063394401
+    second: $SmokeParticle copy_89
+  - first:
+      213: 5594086690370330957
+    second: $SmokeParticle copy_90
+  - first:
+      213: 4448260743619915887
+    second: $SmokeParticle copy_91
+  - first:
+      213: 326303984635543697
+    second: $SmokeParticle copy_92
+  - first:
+      213: 1236553540482314535
+    second: $SmokeParticle copy_93
+  - first:
+      213: 7071862909464600733
+    second: $SmokeParticle copy_94
+  - first:
+      213: 1414646929581955199
+    second: $SmokeParticle copy_95
+  - first:
+      213: 5729050554885203324
+    second: $SmokeParticle copy_96
+  - first:
+      213: -681476546605084651
+    second: $SmokeParticle copy_97
+  - first:
+      213: 8294554028431222929
+    second: $SmokeParticle copy_98
+  - first:
+      213: -7415223140684458912
+    second: $SmokeParticle copy_99
+  - first:
+      213: -7553618952499577522
+    second: $SmokeParticle copy_100
+  - first:
+      213: -6758016563000280027
+    second: $SmokeParticle copy_101
+  - first:
+      213: 5528198957700194282
+    second: $SmokeParticle copy_102
+  - first:
+      213: -6227773556981962473
+    second: $SmokeParticle copy_103
+  - first:
+      213: -7915994206084964897
+    second: $SmokeParticle copy_104
+  - first:
+      213: 852375192710434937
+    second: $SmokeParticle copy_105
+  - first:
+      213: -8115413269605164952
+    second: $SmokeParticle copy_106
+  - first:
+      213: -7029295362419402513
+    second: $SmokeParticle copy_107
+  - first:
+      213: 4478447718114544467
+    second: $SmokeParticle copy_108
+  - first:
+      213: -2255828545971712116
+    second: $SmokeParticle copy_109
+  - first:
+      213: 7390501050347192818
+    second: $SmokeParticle copy_110
+  - first:
+      213: 3723357482972270954
+    second: $SmokeParticle copy_111
+  - first:
+      213: 5807097053304551980
+    second: $SmokeParticle copy_112
+  - first:
+      213: -2738599894217194160
+    second: $SmokeParticle copy_113
+  - first:
+      213: -7240240686069688648
+    second: $SmokeParticle copy_114
+  - first:
+      213: 9187504480388001042
+    second: $SmokeParticle copy_115
+  - first:
+      213: -8997591068455919431
+    second: $SmokeParticle copy_116
+  - first:
+      213: -1121621357377179238
+    second: $SmokeParticle copy_117
+  - first:
+      213: -7328619883986634203
+    second: $SmokeParticle copy_118
+  - first:
+      213: -213851027367877763
+    second: $SmokeParticle copy_119
+  - first:
+      213: -8854485540519292283
+    second: $SmokeParticle copy_120
+  - first:
+      213: -6971633104683577199
+    second: $SmokeParticle copy_121
+  - first:
+      213: 5188870262548667617
+    second: $SmokeParticle copy_122
+  - first:
+      213: 5942034200314291533
+    second: $SmokeParticle copy_123
+  - first:
+      213: 7005261009499959327
+    second: $SmokeParticle copy_124
+  - first:
+      213: 3239670728200658988
+    second: $SmokeParticle copy_125
+  - first:
+      213: -4295479112423152611
+    second: $SmokeParticle copy_126
+  - first:
+      213: -4666864471157646810
+    second: $SmokeParticle copy_127
+  - first:
+      213: 5418311574979622941
+    second: $SmokeParticle copy_128
+  - first:
+      213: 2190039026742066856
+    second: $SmokeParticle copy_129
+  - first:
+      213: -4976543515807894293
+    second: $SmokeParticle copy_130
+  - first:
+      213: -54478165030531139
+    second: $SmokeParticle copy_131
+  - first:
+      213: -3559053583359683575
+    second: $SmokeParticle copy_132
+  - first:
+      213: 6765568581113287025
+    second: $SmokeParticle copy_133
+  - first:
+      213: -3808086259913650793
+    second: $SmokeParticle copy_134
+  - first:
+      213: -3089469697419435145
+    second: $SmokeParticle copy_135
+  - first:
+      213: -4366590329672828169
+    second: $SmokeParticle copy_136
+  - first:
+      213: 5334813292124369943
+    second: $SmokeParticle copy_137
+  - first:
+      213: -5356691833573281458
+    second: $SmokeParticle copy_138
+  - first:
+      213: -2488150111292712291
+    second: $SmokeParticle copy_139
+  - first:
+      213: 5666543136856852652
+    second: $SmokeParticle copy_140
+  - first:
+      213: 8370037931111426353
+    second: $SmokeParticle copy_141
+  - first:
+      213: -5525552445522014614
+    second: $SmokeParticle copy_142
+  - first:
+      213: 7158468432534157587
+    second: $SmokeParticle copy_143
+  - first:
+      213: 8707186108991540515
+    second: $SmokeParticle copy_144
+  - first:
+      213: 3604092068440174998
+    second: $SmokeParticle copy_145
+  - first:
+      213: 3117894494887908419
+    second: $SmokeParticle copy_146
+  - first:
+      213: -6030618518358536855
+    second: $SmokeParticle copy_147
+  - first:
+      213: 9017256668737442529
+    second: $SmokeParticle copy_148
+  - first:
+      213: 1910925517063111662
+    second: $SmokeParticle copy_149
+  - first:
+      213: 685296865890921919
+    second: $SmokeParticle copy_150
+  - first:
+      213: -8605348393415341091
+    second: $SmokeParticle copy_151
+  - first:
+      213: 929615190004200679
+    second: $SmokeParticle copy_152
+  - first:
+      213: 4385826488654312740
+    second: $SmokeParticle copy_153
+  - first:
+      213: 223506163128033491
+    second: $SmokeParticle copy_154
+  - first:
+      213: 6894419233207711572
+    second: $SmokeParticle copy_155
+  - first:
+      213: -1979323130446597436
+    second: $SmokeParticle copy_156
+  - first:
+      213: 3278906931270902721
+    second: $SmokeParticle copy_157
+  - first:
+      213: -356106460767353279
+    second: $SmokeParticle copy_158
+  - first:
+      213: 6576239260125536573
+    second: $SmokeParticle copy_159
+  - first:
+      213: -1082009566261573216
+    second: $SmokeParticle copy_160
+  - first:
+      213: -2335941309641120803
+    second: $SmokeParticle copy_161
+  - first:
+      213: 3774022779052827703
+    second: $SmokeParticle copy_162
+  - first:
+      213: -4730617251400977396
+    second: $SmokeParticle copy_163
+  - first:
+      213: -8306896689521299945
+    second: $SmokeParticle copy_164
+  - first:
+      213: -1843987479318828542
+    second: $SmokeParticle copy_165
+  - first:
+      213: -603732102998763114
+    second: $SmokeParticle copy_166
+  - first:
+      213: 3794003074977680750
+    second: $SmokeParticle copy_167
+  - first:
+      213: 9198264432702123425
+    second: $SmokeParticle copy_168
+  - first:
+      213: -2069967128304368520
+    second: $SmokeParticle copy_169
+  - first:
+      213: -2292484828647667699
+    second: $SmokeParticle copy_170
+  - first:
+      213: -4665413676918488436
+    second: $SmokeParticle copy_171
+  - first:
+      213: 5608948808176339268
+    second: $SmokeParticle copy_172
+  - first:
+      213: -3280105350205708250
+    second: $SmokeParticle copy_173
+  - first:
+      213: 176928564456546476
+    second: $SmokeParticle copy_174
+  - first:
+      213: -9114707300450869272
+    second: $SmokeParticle copy_175
+  - first:
+      213: -4645556407790807813
+    second: $SmokeParticle copy_176
+  - first:
+      213: 7434594817645859071
+    second: $SmokeParticle copy_177
+  - first:
+      213: 854848026738316279
+    second: $SmokeParticle copy_178
+  - first:
+      213: -9143119146386877939
+    second: $SmokeParticle copy_179
+  - first:
+      213: 1858509995936396578
+    second: $SmokeParticle copy_180
+  - first:
+      213: 7929583650159057404
+    second: $SmokeParticle copy_181
+  - first:
+      213: -4340279915174040453
+    second: $SmokeParticle copy_182
+  - first:
+      213: -3362322279595747687
+    second: $SmokeParticle copy_183
+  - first:
+      213: 4388843986984487122
+    second: $SmokeParticle copy_184
+  - first:
+      213: -4050544915310713257
+    second: $SmokeParticle copy_185
+  - first:
+      213: 1577519365139274052
+    second: $SmokeParticle copy_186
+  - first:
+      213: 1923351333326671003
+    second: $SmokeParticle copy_187
+  - first:
+      213: 5829183733896708156
+    second: $SmokeParticle copy_188
+  - first:
+      213: -4035345929113676625
+    second: $SmokeParticle copy_189
+  - first:
+      213: -4514986859543744681
+    second: $SmokeParticle copy_190
+  - first:
+      213: 2955166720258826975
+    second: $SmokeParticle copy_191
+  - first:
+      213: 2100489633252196079
+    second: $SmokeParticle copy_192
+  - first:
+      213: -7045927271942958957
+    second: $SmokeParticle copy_193
+  - first:
+      213: -5500437017176953227
+    second: $SmokeParticle copy_194
+  - first:
+      213: 4602946656190513542
+    second: $SmokeParticle copy_195
+  - first:
+      213: -8112248450247408028
+    second: $SmokeParticle copy_196
+  - first:
+      213: 5509279380920086793
+    second: $SmokeParticle copy_197
+  - first:
+      213: 2369972179774557285
+    second: $SmokeParticle copy_198
+  - first:
+      213: -4163143645315576379
+    second: $SmokeParticle copy_199
+  - first:
+      213: -8465561315697885085
+    second: $SmokeParticle copy_200
+  - first:
+      213: -5035931910883533043
+    second: $SmokeParticle copy_201
+  - first:
+      213: 2186361935045854679
+    second: $SmokeParticle copy_202
+  - first:
+      213: 3696969492498205940
+    second: $SmokeParticle copy_203
+  - first:
+      213: -8903617429903273527
+    second: $SmokeParticle copy_204
+  - first:
+      213: 900948678289010139
+    second: $SmokeParticle copy_205
+  - first:
+      213: -2146069694532521277
+    second: $SmokeParticle copy_206
+  - first:
+      213: -8204561154253529310
+    second: $SmokeParticle copy_207
+  - first:
+      213: 4793773931378573364
+    second: $SmokeParticle copy_208
+  - first:
+      213: 8526217894340988991
+    second: $SmokeParticle copy_209
+  - first:
+      213: -5934629703024399106
+    second: $SmokeParticle copy_210
+  - first:
+      213: -551216839885207246
+    second: $SmokeParticle copy_211
+  - first:
+      213: 3481976767791203373
+    second: $SmokeParticle copy_212
+  - first:
+      213: -5475586458545371971
+    second: $SmokeParticle copy_213
+  - first:
+      213: -498745055605665295
+    second: $SmokeParticle copy_214
+  - first:
+      213: -3510447447331809517
+    second: $SmokeParticle copy_215
+  - first:
+      213: -1127333871184158440
+    second: $SmokeParticle copy_216
+  - first:
+      213: 7976873965854159699
+    second: $SmokeParticle copy_217
+  - first:
+      213: 3191911179403928235
+    second: $SmokeParticle copy_218
+  - first:
+      213: 2363433392985919676
+    second: $SmokeParticle copy_219
+  - first:
+      213: 6369228049248736245
+    second: $SmokeParticle copy_220
+  - first:
+      213: 5962108929543505604
+    second: $SmokeParticle copy_221
+  - first:
+      213: -4223421276266833525
+    second: $SmokeParticle copy_222
+  - first:
+      213: -6244677707563475908
+    second: $SmokeParticle copy_223
+  - first:
+      213: -2470522671288659461
+    second: $SmokeParticle copy_224
+  - first:
+      213: 2155856716196766058
+    second: $SmokeParticle copy_225
+  - first:
+      213: -5583934996084838726
+    second: $SmokeParticle copy_226
+  - first:
+      213: 7848276115373521176
+    second: $SmokeParticle copy_227
+  - first:
+      213: -1089957400339912206
+    second: $SmokeParticle copy_228
+  - first:
+      213: 7041104852502017155
+    second: $SmokeParticle copy_229
+  - first:
+      213: -7274697881123083815
+    second: $SmokeParticle copy_230
+  - first:
+      213: 3167580161947397456
+    second: $SmokeParticle copy_231
+  - first:
+      213: -6522530519534972234
+    second: $SmokeParticle copy_232
+  - first:
+      213: -3710108212364641317
+    second: $SmokeParticle copy_233
+  - first:
+      213: -5046568072348089098
+    second: $SmokeParticle copy_234
+  - first:
+      213: 4801228695851844126
+    second: $SmokeParticle copy_235
+  - first:
+      213: 8483056632998899309
+    second: $SmokeParticle copy_236
+  - first:
+      213: -1667365476239470846
+    second: $SmokeParticle copy_237
+  - first:
+      213: -8687232975215750696
+    second: $SmokeParticle copy_238
+  - first:
+      213: -6754031843387347271
+    second: $SmokeParticle copy_239
+  - first:
+      213: -2800630622760828420
+    second: $SmokeParticle copy_240
+  - first:
+      213: -3574144871537157966
+    second: $SmokeParticle copy_241
+  - first:
+      213: -78850765303215457
+    second: $SmokeParticle copy_242
+  - first:
+      213: 1917917533561164682
+    second: $SmokeParticle copy_243
+  - first:
+      213: 1292401140108327096
+    second: $SmokeParticle copy_244
+  - first:
+      213: 8434266741962520691
+    second: $SmokeParticle copy_245
+  - first:
+      213: 766510973638969432
+    second: $SmokeParticle copy_246
+  - first:
+      213: -182537376202668494
+    second: $SmokeParticle copy_247
+  - first:
+      213: 5976880533364130181
+    second: $SmokeParticle copy_248
+  - first:
+      213: -6134422235351699350
+    second: $SmokeParticle copy_249
+  - first:
+      213: -8778008052129999887
+    second: $SmokeParticle copy_250
+  - first:
+      213: 8908574211171894635
+    second: $SmokeParticle copy_251
+  - first:
+      213: 6930270530134937936
+    second: $SmokeParticle copy_252
+  - first:
+      213: -7474556869229901499
+    second: $SmokeParticle copy_253
+  - first:
+      213: 1116760269717618775
+    second: $SmokeParticle copy_254
+  - first:
+      213: 1148176602334590889
+    second: $SmokeParticle copy_255
+  - first:
+      213: 5538130925280192106
+    second: $SmokeParticle copy_256
+  - first:
+      213: -5864691119072734057
+    second: $SmokeParticle copy_257
+  - first:
+      213: 3725301817847350728
+    second: $SmokeParticle copy_258
+  - first:
+      213: 6369899503106913036
+    second: $SmokeParticle copy_259
+  - first:
+      213: -6852626073238949558
+    second: $SmokeParticle copy_260
+  - first:
+      213: -2673191914932364641
+    second: $SmokeParticle copy_261
+  - first:
+      213: 417018634965837547
+    second: $SmokeParticle copy_262
+  - first:
+      213: -8441291376777247306
+    second: $SmokeParticle copy_263
+  - first:
+      213: -6718539389620678628
+    second: $SmokeParticle copy_264
+  - first:
+      213: -2818297384877092496
+    second: $SmokeParticle copy_265
+  - first:
+      213: -8407205947775484450
+    second: $SmokeParticle copy_266
+  - first:
+      213: 730640327630290000
+    second: $SmokeParticle copy_267
+  - first:
+      213: 707306033018945252
+    second: $SmokeParticle copy_268
+  - first:
+      213: -5931026654344341922
+    second: $SmokeParticle copy_269
+  - first:
+      213: 8342178118209570528
+    second: $SmokeParticle copy_270
+  - first:
+      213: 6801507819745747843
+    second: $SmokeParticle copy_271
+  - first:
+      213: 8483119289819287444
+    second: $SmokeParticle copy_272
+  - first:
+      213: 4855555377322729432
+    second: $SmokeParticle copy_273
+  - first:
+      213: -3810362598803225485
+    second: $SmokeParticle copy_274
+  - first:
+      213: 2700029470263779569
+    second: $SmokeParticle copy_275
+  - first:
+      213: -7448206631428699081
+    second: $SmokeParticle copy_276
+  - first:
+      213: 7302811747950414337
+    second: $SmokeParticle copy_277
+  - first:
+      213: -4389773547889783236
+    second: $SmokeParticle copy_278
+  - first:
+      213: -3241875403514526214
+    second: $SmokeParticle copy_279
+  - first:
+      213: 2513370161711879638
+    second: $SmokeParticle copy_280
+  - first:
+      213: 2778781924153333708
+    second: $SmokeParticle copy_281
+  - first:
+      213: 6031046508671189206
+    second: $SmokeParticle copy_282
+  - first:
+      213: 1221502894342895974
+    second: $SmokeParticle copy_283
+  - first:
+      213: -5917868091009632948
+    second: $SmokeParticle copy_284
+  - first:
+      213: -4273641292074246999
+    second: $SmokeParticle copy_285
+  - first:
+      213: -1383957122107734856
+    second: $SmokeParticle copy_286
+  - first:
+      213: -7145690721350049562
+    second: $SmokeParticle copy_287
+  - first:
+      213: 90543826158019912
+    second: $SmokeParticle copy_288
+  - first:
+      213: -8608609886741209068
+    second: $SmokeParticle copy_289
+  - first:
+      213: 2796001052139098880
+    second: $SmokeParticle copy_290
+  - first:
+      213: -4485394539265734125
+    second: $SmokeParticle copy_291
+  - first:
+      213: -3717452785940772302
+    second: $SmokeParticle copy_292
+  - first:
+      213: 7455198120443260196
+    second: $SmokeParticle copy_293
+  - first:
+      213: 1797329186175625366
+    second: $SmokeParticle copy_294
+  - first:
+      213: 4062081641793762554
+    second: $SmokeParticle copy_295
+  - first:
+      213: -8395793854990294258
+    second: $SmokeParticle copy_296
+  - first:
+      213: 5299243192322552516
+    second: $SmokeParticle copy_297
+  - first:
+      213: 7320162545705808787
+    second: $SmokeParticle copy_298
+  - first:
+      213: -1845844991662584248
+    second: $SmokeParticle copy_299
+  - first:
+      213: 1786484171282952444
+    second: $SmokeParticle copy_300
+  - first:
+      213: -1546966449482674608
+    second: $SmokeParticle copy_301
+  - first:
+      213: 4083922062787202659
+    second: $SmokeParticle copy_302
+  - first:
+      213: 8513417968911492430
+    second: $SmokeParticle copy_303
+  - first:
+      213: 5865587414813832809
+    second: $SmokeParticle copy_304
+  - first:
+      213: 8708639795704540162
+    second: $SmokeParticle copy_305
+  - first:
+      213: 7239679081765046558
+    second: $SmokeParticle copy_306
+  - first:
+      213: 4785623051223622490
+    second: $SmokeParticle copy_307
+  - first:
+      213: -7945446908964017250
+    second: $SmokeParticle copy_308
+  - first:
+      213: 5313060721022665181
+    second: $SmokeParticle copy_309
+  - first:
+      213: -3788302974237808712
+    second: $SmokeParticle copy_310
+  - first:
+      213: -2799263514270844120
+    second: $SmokeParticle copy_311
+  - first:
+      213: -5699550468402402385
+    second: $SmokeParticle copy_312
+  - first:
+      213: 1805405586363675394
+    second: $SmokeParticle copy_313
+  - first:
+      213: -8634892768955769204
+    second: $SmokeParticle copy_314
+  - first:
+      213: 3751302170725996129
+    second: $SmokeParticle copy_315
+  - first:
+      213: 2259688476400460850
+    second: $SmokeParticle copy_316
+  - first:
+      213: -6404234959425690000
+    second: $SmokeParticle copy_317
+  - first:
+      213: -3862425177131690796
+    second: $SmokeParticle copy_318
+  - first:
+      213: -7421475567717600295
+    second: $SmokeParticle copy_319
+  - first:
+      213: 5932729773248432491
+    second: $SmokeParticle copy_320
+  - first:
+      213: 5534015894869046235
+    second: $SmokeParticle copy_321
+  - first:
+      213: -3385758178578958826
+    second: $SmokeParticle copy_322
+  - first:
+      213: 8135948799407784865
+    second: $SmokeParticle copy_323
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $SmokeParticle copy_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 899.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd90952dfe2bfa750800000000000000
+      internalID: 6318465545320073693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 899.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867860b689bf56b70800000000000000
+      internalID: 8891789671362103144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 899.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33738caec7f1f5a00800000000000000
+      internalID: 747350684542187315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 899.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6390d997a8c675230800000000000000
+      internalID: 3627487366871845174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca628ba63a08f8e70800000000000000
+      internalID: 9119649209807021740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2db1cff2d0bab00800000000000000
+      internalID: 840780255179035344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bac2a2d6a36bc80800000000000000
+      internalID: -8307388222104884362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_7
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 993786e4109ae8fa0800000000000000
+      internalID: -5796509847303720039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 301.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80767dba88879f30800000000000000
+      internalID: 4582281275338289291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 301.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32938432ecee2f70800000000000000
+      internalID: 9164522748033339966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 301.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328696330c9e27960800000000000000
+      internalID: 7598392533032986659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 301.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295ea045eeb1abe00800000000000000
+      internalID: 1061191372625339794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5828f2dda3c60600800000000000000
+      internalID: 434249565424068698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 2.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a144b5c707ab19ad0800000000000000
+      internalID: -2697169709532756966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_14
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 2.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610c696384a98cc50800000000000000
+      internalID: 6685763281775673366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $SmokeParticle copy_15
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2.25
+        width: 300
+        height: 299.75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1967aeeaa3c504850800000000000000
+      internalID: 6359184080959600273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

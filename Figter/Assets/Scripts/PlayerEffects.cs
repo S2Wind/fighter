@@ -15,12 +15,12 @@ public static class PlayerEffects
 
     public static IEnumerator StunPlayer(PlayerControl player,float time)
     {
-        curAtt = player.Attitudes;
+        curAtt = PlayerControl.Attitudes;
         player.gameObject.GetComponentInParent<Animator>().SetBool("beStun", true);
-        player.Attitudes = dead;
+        PlayerControl.Attitudes = dead;
         yield return new WaitForSeconds(time);
         player.gameObject.GetComponentInParent<Animator>().SetBool("beStun", false);
-        player.Attitudes = curAtt;
+        PlayerControl.Attitudes = curAtt;
     }
 
 

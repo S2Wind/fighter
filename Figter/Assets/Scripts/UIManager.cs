@@ -30,4 +30,5 @@ public class UIManager : MonoBehaviour
     {
         playerHealthAmountText.text = amount.ToString();
     }
+
 }
