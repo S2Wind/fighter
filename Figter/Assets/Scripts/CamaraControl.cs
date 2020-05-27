@@ -9,7 +9,7 @@ public class CamaraControl : MonoBehaviour
 
     Vector3 pos;
     
-    void Start()
+    void Awake()
     {
         transform.position = new Vector3(player.position.x,player.position.y,-10f);
     }
@@ -18,7 +18,7 @@ public class CamaraControl : MonoBehaviour
     void Update()
     {
         pos = new Vector3(player.position.x, player.position.y, -10f) - transform.position;
-
-        transform.position += pos * Time.deltaTime*speed;
+        if(Mathf.Abs(pos.x) > 0.1f)
+            transform.position += pos * Time.deltaTime*speed;
     }
 }

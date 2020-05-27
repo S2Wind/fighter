@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -42,9 +41,14 @@ public class PlayerControl : MonoBehaviour
     float yVal;
     float timer;
     float extentHeight =0.1f;
+
+
     //lenghtOf
 
     static bool isGround;
+    static int groundedType;
+    // type 1 : RayCast for cross ground not null
+    //type 2  : RayCast for cross ground null
 
     static int attitudes;
 
@@ -159,7 +163,7 @@ public class PlayerControl : MonoBehaviour
 
     private void CheckAttitudes()
     {
-        if (IsGround())
+        if (IsGround() != 0)
         {
             if (xVal != 0 && Mathf.Approximately(yVal, 0))
             {
@@ -205,7 +209,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Debug.Log("slide");
 
-        if(Mathf.Abs(rb.velocity.x) <0.1f && !IsGround())
+        if(Mathf.Abs(rb.velocity.x) <0.1f && IsGround() == 1 )
         {
             timer = 0;
             if (slideType == 1)
@@ -304,16 +308,19 @@ public class PlayerControl : MonoBehaviour
         sprite.flipX = !sprite.flipX;
         XDir = -XDir;
     }
-    public bool IsGround()
+    public int IsGround()
     {
-        float lenghtOfGroundRay = 0.05f;
+        float lenghtOfGroundRay = 0.1f;
         RaycastHit2D cast2d = Physics2D.BoxCast(box.bounds.center + Mathf.Sign(XDir)*new Vector3(-0.1f,0f,0f)
                             , box.bounds.size - new Vector3(0.2f,-lenghtOfGroundRay,0f), 0f, Vector2.down,lenghtOfGroundRay,groundMask);
         RaycastHit2D rayCast2D = Physics2D.Raycast(box.bounds.center, Vector2.down, box.bounds.extents.y + box.bounds.extents.x + lenghtOfGroundRay,groundMask);
 
         Color rayColor;
-        if (cast2d.collider != null || rayCast2D.collider != null )
+        Color raycastColor;
+        if (cast2d.collider != null || rayCast2D.collider != null)
         {
+            if (rayCast2D.collider != null) raycastColor = Color.green;
+            else raycastColor = Color.red;
             if (rb.velocity.y < 0 && anmt.GetFloat("y")>=0)
             {
                 anmt.SetFloat("y", 0f);
@@ -327,14 +334,17 @@ public class PlayerControl : MonoBehaviour
         {
             if (anmt.GetBool("Grounded"))
                 anmt.SetBool("Grounded", false);
+            raycastColor = Color.red;
             rayColor = Color.red;
             IsGround1 = false;
         }
         Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x,0f,0f),Vector2.down * (box.bounds.extents.y + lenghtOfGroundRay),rayColor);
         Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0f, 0f), Vector2.down * (box.bounds.extents.y + lenghtOfGroundRay), rayColor);
         Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, box.bounds.extents.y+lenghtOfGroundRay, 0f), Vector2.right * (box.bounds.extents.x*2), rayColor);
-        Debug.DrawRay(box.bounds.center, Vector2.down * (box.bounds.extents.y + box.bounds.extents.x + lenghtOfGroundRay), rayColor);
-        return cast2d.collider != null;
+        Debug.DrawRay(box.bounds.center, Vector2.down * (box.bounds.extents.y + box.bounds.extents.x + lenghtOfGroundRay), raycastColor);
+        if(cast2d.collider != null) return 1;
+        if (rayCast2D.collider != null) return 2;
+        return 0;
     }
 
     public bool isClimbing()
@@ -377,7 +387,7 @@ public class PlayerControl : MonoBehaviour
                 rb.gravityScale = 1;
         }
         Debug.DrawRay(box.bounds.center, Vector2.right * Mathf.Sign(dir) * length, rayColor);
-        if (!IsGround() && cast2D.collider != null)
+        if (IsGround() == 0 && cast2D.collider != null)
             return true;
         else
             return false;

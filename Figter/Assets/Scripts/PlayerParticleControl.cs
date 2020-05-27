@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerParticleControl : MonoBehaviour
@@ -30,7 +29,7 @@ public class PlayerParticleControl : MonoBehaviour
     {
         if(((PlayerControl.Attitudes & (PlayerControl.Slide | PlayerControl.Run)) != 0) && PlayerControl.IsGround1)
         {
-            if(particle.gameObject.active == false)
+            if(particle.gameObject.activeSelf == false)
             {
                 particle.gameObject.SetActive(true);
             }
@@ -60,7 +59,7 @@ public class PlayerParticleControl : MonoBehaviour
         }
         else
         {
-            if (particle.gameObject.active == true)
+            if (particle.gameObject.activeSelf == true)
             {
                 particle.gameObject.SetActive(false);
             }

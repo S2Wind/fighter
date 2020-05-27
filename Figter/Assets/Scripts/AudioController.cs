@@ -24,7 +24,6 @@ public class AudioController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(PlayerControl.Attitudes);
         if (PlayerControl.Attitudes == PlayerControl.Run)
         {
             if (!audioSource.isPlaying || attitudeBefore != PlayerControl.Attitudes)

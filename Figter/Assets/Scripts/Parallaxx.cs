@@ -20,7 +20,7 @@ public class Parallaxx : MonoBehaviour
     void Start()
     {
         previousCam = cam.position;
-        extent = GetComponent<SpriteRenderer>().bounds.size.x;
+        extent = GetComponent<SpriteRenderer>().bounds.extents.x;
     }
 
     void FixedUpdate()
@@ -30,9 +30,9 @@ public class Parallaxx : MonoBehaviour
 
         length = cam.position.x - transform.position.x;
         if (length >= extent)
-            transform.position += new Vector3(extent, 0f, 0f);
+            transform.position += new Vector3(extent*2, 0f, 0f);
         else if(length <= -extent)
-            transform.position += new Vector3(-extent, 0f, 0f);
+            transform.position += new Vector3(-extent*2, 0f, 0f);
     }
 
 }

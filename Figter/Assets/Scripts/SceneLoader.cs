@@ -39,6 +39,11 @@ public class SceneLoader:MonoBehaviour
         StartCoroutine(TransitionBetweenScene());
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     IEnumerator TransitionBetweenScene()
     {
         anmt.SetTrigger("start");
